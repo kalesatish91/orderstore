@@ -1,0 +1,22 @@
+<div class="col-md-6 user-container">
+    <h2 class="text-center">Add Order</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" formControlName="title" placeholder="title" name="title" class="form-control" id="title">
+        </div>
+        <br />
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" formControlName="amount" placeholder="amount" name="amount" class="form-control"
+                id="amount" ngPattern="onlyNumbers">
+        </div>
+
+        <br />
+        <div>
+            <button class="btn btn-success" style="margin-right: 5px;">Add</button>
+            <button class="btn btn-warning">Reset</button>
+        </div>
+    </form>
+</div>
