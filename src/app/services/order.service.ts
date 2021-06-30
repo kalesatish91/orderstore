@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Order } from '../order';
 
 
 @Injectable({
@@ -10,6 +11,7 @@ export class OrderService {
   private url = 'http://localhost:8080/orders/';
 
   constructor(private http: HttpClient) {
+    console.log("this.http ", this.http);
   }
 
   getOrders(): Observable<any> {
@@ -23,5 +25,13 @@ export class OrderService {
 
   deleteOrder(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`, { responseType: 'text' });
+  }
+
+  getOrder(id: number): Observable<any> {
+    return this.http.get(`${this.url}${id}`);
+  }
+
+  updateOrder(order: Order): Observable<Object> {
+    return this.http.put(`${this.url}${order.id}`, order);
   }
 }

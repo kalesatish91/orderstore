@@ -7,6 +7,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Title</th>
+                <th scope="col">Email</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -15,20 +16,16 @@
             <tr *ngFor="let order of orders">
                 <th scope="row">{{order.id}}</th>
                 <td>{{order.title}}</td>
+                <td>{{order.email}}</td>
                 <td>{{order.amount}}</td>
                 <td>
                     <div>
                         <button class="btn btn-danger" (click)="deleteOrder(order.id)"
                             style="margin-right: 5px;">DELETE</button>
-                        <button class="btn btn-primary">EDIT</button>
+                        <button class="btn btn-primary" (click)="editOrder(order.id)">EDIT</button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
-<div>
-    <p>
-        <button class="btn btn-primary" (click)="addOrder()"> Add Order</button>
-    </p>
 </div>

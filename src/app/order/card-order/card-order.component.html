@@ -1,0 +1,64 @@
+<div class="container">
+    <h3>Dashboard</h3>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <button mat-raised-button color="primary" matBadge="{{orders.length}}" matBadgePosition="after" matBadgeColor="accent"
+                (click)="addOrder()">
+                Add
+            </button>
+        </div>
+        <div class="col text-right">
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Search</mat-label>
+                <input matInput type="search" [(ngModel)]="searchText">
+                <button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-container">
+            <mat-card class="order-card" *ngFor="let order of orders">
+                <mat-card-header>
+                    <mat-card-title>
+                        <span class="material-icons card-icon">
+                            account_circle
+                        </span>
+                        <span>
+                            {{order.title}}
+                        </span>
+
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="card-body">
+                    <div>
+                        <span class="material-icons card-icon">
+                            email
+                        </span>
+                        <span>
+                            {{order.email}}
+                        </span>
+                    </div>
+                    <div>
+                        <span class="material-icons card-icon">
+                            paid
+                        </span>
+                        <span>
+                            {{order.amount}}
+                        </span>
+                    </div>
+                    
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="card-button-row">
+                        <button mat-button class="card-button" (click)="deleteOrder(order.id)">DELETE</button>
+                        <button mat-button class="card-button" (click)="editOrder(order.id)">EDIT</button>
+                    </div>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

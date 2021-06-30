@@ -1,22 +1,33 @@
-<div class="col-md-6 user-container">
-    <h2 class="text-center">Add Order</h2>
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" formControlName="title" placeholder="title" name="title" class="form-control" id="title">
+<div id="modal-content-wrapper">
+    <header id="modal-header">
+        <h1 id="modal-title">Add Order</h1>
+    </header>
+    <hr />
+    <section id="modal-body">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" formControlName="title" placeholder="title" name="title" class="form-control"
+                    id="title">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" formControlName="email" placeholder="email" name="email" class="form-control"
+                    id="email">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" formControlName="amount" placeholder="amount" name="amount" class="form-control"
+                    id="amount">
+            </div>
+        </form>
+    </section>
+    <footer id="modal-footer text-right">
+        <div class="text-right">
+            <button mat-raised-button id="modal-cancel-button" color="warn" (click)="closeModal()" class="mr-3">close</button>
+            <button mat-raised-button id="modal-action-button" color="primary" (click)="onSubmit()">
+                {{isEditMode ? 'Update' : 'Add'}}
+            </button>
         </div>
-        <br />
-
-        <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input type="number" formControlName="amount" placeholder="amount" name="amount" class="form-control"
-                id="amount" ngPattern="onlyNumbers">
-        </div>
-
-        <br />
-        <div>
-            <button class="btn btn-success" style="margin-right: 5px;">Add</button>
-            <button class="btn btn-warning">Reset</button>
-        </div>
-    </form>
+    </footer>
 </div>
